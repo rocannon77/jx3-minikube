@@ -53,7 +53,7 @@ releases:
   - jx-values.yaml
   set:
   - name: config.charts.path
-    value: "./"
+    value: ./
 - chart: twuni/docker-registry
   name: docker-registry
   values:
