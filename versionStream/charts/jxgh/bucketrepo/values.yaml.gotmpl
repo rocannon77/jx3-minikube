@@ -11,32 +11,3 @@ serviceaccount:
 {{- if and (hasKey .Values.jxRequirements.cluster "project") (hasKey .Values.jxRequirements.cluster "clusterName") (eq .Values.jxRequirements.cluster.provider "eks") }}
     eks.amazonaws.com/role-arn: arn:aws:iam::{{ .Values.jxRequirements.cluster.project }}:role/{{ .Values.jxRequirements.cluster.clusterName }}-jx-bucketrepo
 {{- end }}
-
-
-{{- if eq "minikube" .Values.jxRequirements.cluster.provider }}
-config:
-  service:
-    internalPort: "8080"
-  charts:
-    path: "./"
-  auth:
-    username: ""
-    password: ""
-  storage:
-    enabled: false
-    bucketUrl: ""
-  cache:
-    dir: /tmp/bucketrepo
-  repositories:
-    central: "https://repo.maven.org/maven2"
-    central1: "https://repo1.maven.org/maven2"
-    uk: "http://uk.maven.org/maven2/"
-    spring-releases: "https://repo.spring.io/release/"
-    spring-milestone: "https://repo.spring.io/milestone/"
-    gradle: "https://services.gradle.org/distributions/"
-    gradlem2: "https://plugins.gradle.org/m2/"
-    jenkins-public: "https://repo.jenkins-ci.org/public/"
-    jenkins-releases: "https://repo.jenkins-ci.org/releases/"
-    jitpack: "https://jitpack.io/"
-    npm: "https://registry.npmjs.org/"
-{{- end }}
