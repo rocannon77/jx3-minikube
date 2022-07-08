@@ -54,6 +54,8 @@ releases:
   set:
   - name: config.charts.path
     value: ./
+  - name: service.type
+    value: NodePort
 - chart: twuni/docker-registry
   name: docker-registry
   values:
